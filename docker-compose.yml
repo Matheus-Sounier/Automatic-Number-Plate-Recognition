@@ -5,3 +5,12 @@ services:
     restart: unless-stopped
     env_file: 
       - .env
+
+    ports:
+      - "${PORT}:1521"
+
+    volumes:
+      - oracle_dados_wsl:/opt/oracle/oradata
+    
+    networks:
+      - computer_vision_network
