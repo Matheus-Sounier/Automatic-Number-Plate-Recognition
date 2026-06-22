@@ -1,0 +1,7 @@
+services:
+  oracle:
+    image: container-registry.oracle.com/database/free:23.26.1.0
+    container_name: ${CONTAINER_DB_NAME}
+    restart: unless-stopped
+    env_file: 
+      - .env
