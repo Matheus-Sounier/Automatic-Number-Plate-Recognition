@@ -21,7 +21,7 @@ def persist_interval(license_plates, saved_plates, startTime, currentTime):
               startTime, endTime
             )
             save_to_database(
-              [(plate, is_valid, image) for plate, is_valid, image, score, count in new_plates.values()],
+              [(plate, is_valid, score, image) for plate, is_valid, image, score, count in new_plates.values()],
               startTime, endTime
           )
 
