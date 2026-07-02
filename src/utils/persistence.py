@@ -12,7 +12,7 @@ def persist_interval(license_plates, saved_plates, startTime, currentTime):
         new_plates = {
             track_id: (plate, is_valid, image, score, confirm_count)
             for track_id, (plate, is_valid, image, score, confirm_count) in license_plates.items()
-            if plate not in saved_plates and confirm_count >= 2
+            if plate not in saved_plates and confirm_count >= 1
         }
         if new_plates:
             saved_plates.update(plate for plate, *_ in new_plates.values())
@@ -39,6 +39,6 @@ def persist_disappeared(license_plates, saved_plates, tracked, currentTime):
 
     for track_id in disappeared:
         plate, is_valid, image, score, confirm_count = license_plates.pop(track_id)
-        if plate not in saved_plates and confirm_count >= 2:
+        if plate not in saved_plates and confirm_count >= 1:
             saved_plates.add(plate)
 
