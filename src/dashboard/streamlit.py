@@ -38,3 +38,21 @@ with col_m:
     st.bar_chart({str(r[0]): r[1] for r in monthly})
 
 st.divider()
+
+col_exec, col_inv = st.columns(2)
+
+with col_exec:
+    st.subheader("Executive Report")
+    if st.button("Generate Executive Report"):
+        with st.spinner("Analyzing data..."):
+            st.session_state["executive_report"] = run_executive_agent()
+    if "executive_report" in st.session_state:
+        st.write(st.session_state["executive_report"])
+
+with col_inv:
+    st.subheader("Investigation of Anomalies")
+    if st.button("Execute Investigation"):
+        with st.spinner("Investigating..."):
+            st.session_state["investigation_report"] = investigate()
+    if "investigation_report" in st.session_state:
+        st.write(st.session_state["investigation_report"])
